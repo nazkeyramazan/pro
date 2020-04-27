@@ -1,13 +1,15 @@
 import { CategoryComponent } from './category/category.component';
+import { Category } from './categories';
 
 export interface Product{
   id:number;
-  // category_id:number;
+  category_id:number;
   name:string,
   price:number;
   description:string;
-   image: string,
-   link:string,
+   image: string;
+   link:string;
+   category: Category;
 }
 
 // export const products = [

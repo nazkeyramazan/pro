@@ -3,6 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=250)
+    image = models.CharField(max_length=10000,default='No data')
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
@@ -12,6 +13,7 @@ class Category(models.Model):
         return {
             'id' : self.id,
             'name' : self.name,
+            'image' : self.image,
 
         }
 
@@ -19,8 +21,8 @@ class Book (models.Model):
     name = models.CharField(max_length=250)
     description = models.CharField(max_length=10000,default="No data")
     price = models.IntegerField( default='No data')
-    image = models.CharField(max_length=10000,default='no image, text to owner to update info')
-    link = models.CharField(max_length=10000,default='No inforamtion, text to owner to update info')
+    image = models.CharField(max_length=10000)
+    link = models.CharField(max_length=10000)
     category = models.ForeignKey(Category ,on_delete=models.CASCADE)
     class Meta:
         verbose_name = 'Book'

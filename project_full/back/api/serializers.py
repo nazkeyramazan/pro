@@ -5,13 +5,14 @@ from api.models import Category , Book
 class CategorySerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField()
-
+    image = serializers.CharField()
     def create(self, validated_data):
-        category = Category.objects.create(name=validated_data.get('name'))
+        category = Category.objects.create(**validated_data)
         return category
 
     def update(self, instance, validated_data):
         instance.name = validated_data.get('name', instance.name)
+        instance.image = validated_data.get('image', instance.image)
         instance.save()
         return instance
 
@@ -25,7 +26,7 @@ class BookModelSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(write_only=True)
     class Meta:
         model = Book
-        fields = ('id', 'name', 'description' , 'price' , 'category', 'category_id')
+        fields = ('id', 'name', 'description' , 'price' ,'image' , 'link', 'category', 'category_id')
 class Book2ModelSerializer(serializers.ModelSerializer):
     # category = CategoryModelSerializer (read_only= True)
     # category_id = serializers.IntegerField(write_only=True)
@@ -34,7 +35,7 @@ class Book2ModelSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description' , 'price' , 'image' , 'link')
 
 class CategoryWithBookModelSerializer(serializers.ModelSerializer):
-    books = BookModelSerializer(many=True, read_only=True)
+    books = Book2ModelSerializer(many=True, read_only=True)
     class Meta:
         model = Category
         fields = ('id', 'name', 'books')

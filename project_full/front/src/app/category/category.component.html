@@ -1,7 +1,7 @@
 
-<div>
-            <p> category books</p>
-   <!-- <div class="button" *ngIf="let category of categories">
+<div >
+            <h1> category books</h1>
+   <!-- <div class="button" *ngFor="let category of categories">
     <img src="{{category.image}}" width="225" height="150">
      {{category.id}}.{{category.name}} 
   </div> -->
@@ -13,6 +13,7 @@
            <h3 style="font-size: 25px;">
               <a routerLink="/products/{{product.id}}" [title]="product.name + ' details'">
                      {{ product.name }}
+                     {{product.category.name}}
               </a>
             </h3>
             <p *ngIf="product.description" style="font-size: 25px;"  >

@@ -27,7 +27,7 @@ export class CategoryService {
     return this.http.get<Category>(`${this.BASE_URL}/api/categories/${id}/`);
   }
 
-  getCategoryBookList(id): Observable<Product[]> {
+  getCategoryBookList(id:number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.BASE_URL}/api/categories/${id}/books/`);
   }
  

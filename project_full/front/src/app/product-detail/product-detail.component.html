@@ -13,9 +13,9 @@
       </p>
       <h4> Цена: {{ product.price }} тенге</h4>
        <br>
-       <p *ngIf="product.link" style="font-size: 25px;">  
-        Подробнее : {{ product.link }}
-      </p>
+       <h4 *ngIf="product.link" style="">  
+         Подробнее : <a>{{ product.link }}</a>
+       </h4>
   
     <button (click)="addToCart(product)">Купить</button>
     

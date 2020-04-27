@@ -1,6 +1,6 @@
 
 
-<div >
+<div class="books" >
  <h1>ALL Books</h1>
 
 
@@ -8,14 +8,17 @@
     <div class="product-item" *ngFor="let product of products">
       <div class="polaroid">
         
-           <img src="{{product.image}}" width="175" height="225">
-          
-        <h4>
+           
+         <div class= "kuku"> 
+        <h4 >
          <a routerLink="/products/{{product.id}}" [title]="product.name + 'детали'" >
+          <img src="{{product.image}}" width="175" height="225">
+          <br>
           {{ product.name }}<br>
-          {{product.price}} tenge<br>
+          {{product.price}} ₸<br>
          </a>
         </h4>
+      </div>
         <div class="button-container">
           <button (click)="share(product)" class="button-fancy"  style="width:auto !important">Share Whats App</button>
         </div>

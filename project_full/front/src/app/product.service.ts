@@ -24,9 +24,13 @@ export class ProductService {
   //   return of(products.filter(product => product.category_id === id));
   // }
 
+  
   getCategoryBookList(id): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.BASE_URL}/api/categories/${id}/books/`);
+    return this.http.get<Product[]>(`${this.BASE_URL}/api/categories/${id}/books`);
   }
+  // getProductofC(categoryId: number): Observable<IProduct[]> {
+  //   return this.http.get<IProduct[]>(`${this.BASE_URL}/api/categories/${categoryId}/products`);
+  // }
   getBookList(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.BASE_URL}/api/books/`);
   }

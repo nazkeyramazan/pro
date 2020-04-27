@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import IsAdminUser
 from api.models import Category , Book
-from api.serializers import CategorySerializer,BookSerializer ,CategoryModelSerializer,BookModelSerializer,CategoryWithBookModelSerializer
+from api.serializers import CategorySerializer,BookSerializer,Book2ModelSerializer ,CategoryModelSerializer,BookModelSerializer,CategoryWithBookModelSerializer
 
 @api_view(['GET', 'POST'])
 def category_list(request):
@@ -34,7 +34,7 @@ def category_detail(request, category_id):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = CategoryModelSerializer(instance=category, data=request.data)
+        serializer = CategorySerializer(instance=category, data=request.data)
         if serializer.is_valid():
             serializer.save()
 
